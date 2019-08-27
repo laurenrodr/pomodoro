@@ -5,10 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=11.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Concert+One|Roboto&display=swap" rel="stylesheet">
         <title>Promodoro Timer</title>
     </head>
     <body>
+        <script src="app.js"></script>
         <header class="header-content">
             <div class="logo-content">
                 <div class="logo-img">
@@ -18,18 +19,21 @@
             </div>
         </header>
         <div class="main-content">
-            <div class="timer">
-
-            </div>
+            <p id="timer">_______</p>
             <div class="timer-buttons">
-                <button type="button" name="pomodoro" value="1" onclick="check(this)">POMODORO</button>
-                <button type="button" name="pomodoro" value="1" onclick="check(this)">SHORT BREAK</button>
-                <button type="button" name="pomodoro" value="1" onclick="check(this)">LONG BREAK</button>
-                <button type="button" name="pomodoro" value="0" onclick="check(this)">STOP</button>
-                <button type="button" name="pomodoro" value="0" onclick="check(this)">PAUSE</button>
+                <!-- <button id="pomodoro" data-time="2500" onclick="check(this)">POMODORO</button> -->
+                <button id="pomodoro" data-time="2500" class="timer-btn">POMODORO</button>
+                <button id="short" data-time="2500" class="timer-btn">SHORT BREAK</button>
+                <button id="long" data-time="2500" class="timer-btn">LONG BREAK</button>
+                <button id="start" data-time="2500" class="timer-btn">START</button>
+                <button id="stop" data-time="2500" class="timer-btn">STOP</button>
             </div>
-            <input type="number" name="minutes">
-            
+            <div class="display-timer">
+                <h1 class="display-time-left"></h1>
+                <p class="display-end-time"></p>
+            </div>
+            <!-- <input type="number" name="minutes"> -->
+
         </div>
     </body>
 </html>
