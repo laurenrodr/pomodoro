@@ -7,3 +7,43 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+/* HEADER */
+header {
+    display: flex;
+    width: 100vw;
+    height: min-content;
+    padding: 10px;
+    margin: auto;
+    align-items: center;
+    background: lightblue;
+
+}
+
+.logo-content {
+    width: 150px;
+    height: 100%;
+    display: contents;
+    background: lightgreen;
+    overflow: auto;
+}
+
+.logo-content .logo-img {
+    width: 30px;
+    height: 30px;
+}
+
+.logo-img img {
+    width: 100%;
+    height: auto;
+}
+
+.logo-text {
+    margin: 5px;
+}
+
+.main-content {
+    background: lightcoral;
+    width: 100vw;
+    height: 100vh;
+}
