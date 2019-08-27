@@ -5,7 +5,8 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Concert One', cursive;
 }
 
 /* HEADER */
@@ -40,8 +41,10 @@ header {
 
 .logo-text {
     margin: 5px;
+    color: lightcoral;
 }
 
+/* MAIN */
 .main-content {
     background: lightcoral;
     width: 100vw;
