@@ -6,17 +6,30 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
-        <title>Promodoro Clock</title>
+        <title>Promodoro Timer</title>
     </head>
     <body>
-        <header class="header--content">
-            <div class="logo">
-                <img src="./images/icons8-tomato-80.png" alt="logo">
-                <h4 class="logo">Pomodoro Clock</h4>
+        <header class="header-content">
+            <div class="logo-content">
+                <div class="logo-img">
+                    <img src="./images/icons8-tomato-80.png" alt="logo"/>
+                </div>
+                <h3 class="logo-text">Pomodoro Timer</h3>
             </div>
         </header>
         <div class="main-content">
+            <div class="timer">
 
+            </div>
+            <div class="timer-buttons">
+                <button type="button" name="pomodoro" value="1" onclick="check(this)">POMODORO</button>
+                <button type="button" name="pomodoro" value="1" onclick="check(this)">SHORT BREAK</button>
+                <button type="button" name="pomodoro" value="1" onclick="check(this)">LONG BREAK</button>
+                <button type="button" name="pomodoro" value="0" onclick="check(this)">STOP</button>
+                <button type="button" name="pomodoro" value="0" onclick="check(this)">PAUSE</button>
+            </div>
+            <input type="number" name="minutes">
+            
         </div>
     </body>
 </html>
