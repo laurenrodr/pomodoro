@@ -48,5 +48,28 @@ header {
 .main-content {
     background: lightcoral;
     width: 100vw;
-    height: 100vh;
+    height: 90.9vh;
+}
+
+.display-timer {
+    display: flex;
+    justify-content: center;
+}
+
+.timer-buttons {
+    display: flex;
+    padding: 20px;
+    margin: auto;
+    justify-content: center;
+}
+
+.timer-btn {
+    border-radius: 20px;
+    min-width: 50px;
+    background: #8f849c;
+    border: 2px solid #8f849c;
+    padding: 10px;
+    font-family: 'Concert One', cursive;
+    color: #ffffff;
+    margin: 10px;
 }
