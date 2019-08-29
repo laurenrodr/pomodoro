@@ -9,7 +9,7 @@
         <title>Promodoro Timer</title>
     </head>
     <body>
-        <script src="app.js"></script>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
         <header class="header-content">
             <div class="logo-content">
                 <div class="logo-img">
@@ -19,7 +19,6 @@
             </div>
         </header>
         <div class="main-content">
-            <p id="timer">_______</p>
             <div class="timer-buttons">
                 <!-- <button id="pomodoro" data-time="2500" onclick="check(this)">POMODORO</button> -->
                 <button id="pomodoro" data-time="2500" class="timer-btn">POMODORO</button>
@@ -29,11 +28,19 @@
                 <button id="stop" data-time="2500" class="timer-btn">STOP</button>
             </div>
             <div class="display-timer">
-                <h1 class="display-time-left"></h1>
+                <h1 class="display-time-left">00:00</h1>
                 <p class="display-end-time"></p>
             </div>
             <!-- <input type="number" name="minutes"> -->
+            <script src="app.js"></script>
 
+            <!--
+            TODO:
+                allow popup form to change pomodoro settings
+                change timer styling
+                allow browser notifications
+                todo list?
+            -->
         </div>
     </body>
 </html>
