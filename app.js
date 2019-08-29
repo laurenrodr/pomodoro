@@ -1,11 +1,11 @@
 let count;
 
-
 function timer(seconds) {
     const now = Date.now();
     console.log(now);
     const then = now + seconds * 1000;
     console.log(then);
+    displayEndTime(then);
 
     displayTimeLeft(seconds);
 
@@ -29,11 +29,16 @@ function displayTimeLeft(seconds) {
     console.log("seconds = " + remainder);
     const display = `${minutes}:${remainder < 10 ? '0' : ''}${remainder}`;
     console.log(display);
-    const timerDisplay = document.querySelector('.display-time-left');
     document.title = display;
+    const timerDisplay = document.querySelector('.display-time-left');
     timerDisplay.textContent = display;
 }
 
 function displayEndTime(timestamp) {
     const end = new Date(timestamp);
+    const hour = end.getHours();
+    const mins = end.getMinutes();
+    const endTime = document.querySelector('.display-end-time');
+    const twelveHourClock = hour > 12 ? hour - 12 : hour;
+    endTime.textContent = `Session will end at ${twelveHourClock}:${mins < 10 ? '0' : ''}${mins}`;
 }
