@@ -70,7 +70,7 @@ header {
 
 .timer-btn {
     border-radius: 20px;
-    min-width: 50px;
+    width: 70px;
     background: #8f849c;
     border: 2px solid #8f849c;
     padding: 10px;
