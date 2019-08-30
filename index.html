@@ -21,29 +21,41 @@
         <div class="main-content">
             <div class="timer-buttons">
                 <!-- <button id="pomodoro" data-time="2500" onclick="check(this)">POMODORO</button> -->
-                <button id="pomodoro" data-time="2500" class="timer-btn">POMODORO</button>
-                <button id="short" data-time="2500" class="timer-btn">SHORT BREAK</button>
-                <button id="long" data-time="2500" class="timer-btn">LONG BREAK</button>
-                <button id="start" data-time="2500" class="timer-btn">START</button>
-                <button id="stop" data-time="2500" class="timer-btn">STOP</button>
+                <!--
+                <button class="pomodoro" data-time="2500" class="timer-btn">POMODORO</button>
+                <button class="short" data-time="2500" class="timer-btn">SHORT BREAK</button>
+                <button class="long" data-time="2500" class="timer-btn">LONG BREAK</button>
+                -->
+                <button id="start" title="Start" class="timer-btn">START</button>
+                <button id="pause" title="Pause" class="timer-btn">PAUSE</button>
+                <!-- style="display: none;" -->
+                <button id="resume" title="Resume" class="timer-btn">RESUME</button>
+                <button id="end" title="End" class="timer-btn">END</button>
             </div>
-            <div class="display-timer">
-                <h1 class="display-time-left">00:00</h1>
-                <p class="display-end-time"></p>
+            <!-- <div class="display-timer">
+                <h1 id="timer">00:00</h1>
+                <p id="display_end_time"></p>
             </div>
-            <!-- <input type="number" name="minutes"> -->
-            <script src="app.js"></script>
+            <script src="app.js"></script> -->
 
+            <p id="timer">00:00</p>
             <!--
             TODO:
-                save user settings -> localStorage?
                 allow popup form to change pomodoro settings
+                save user settings -> localStorage?
                 dark and light mode
                 change timer styling -> circle (going around as time passes)
                 allow browser notifications
+                notification tone/sound option
+                sign in option (to save setting /permanently/ [DB] and work history)
+                    -personal stats (total time/ number of pomodoros)
+                    -connect with google/trello/etc
                 todo list?
                 footer info
+                feedback page
             -->
         </div>
+        <script src="app.js"></script>
+
     </body>
 </html>
