@@ -6,6 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Concert+One|Roboto&display=swap" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
         <title>Promodoro Timer</title>
     </head>
     <body>
@@ -30,13 +32,26 @@
                 <button id="pause" title="Pause" class="timer-btn" style="display: none;" onclick="pauseTimer()">PAUSE</button>
                 <!-- style="display: none;" -->
                 <button id="resume" title="Resume" class="timer-btn" style="display: none;" onclick="resumeTimer()">RESUME</button>
-                <button id="end" title="End" class="timer-btn">END</button>
+                <button id="end" title="End" class="timer-btn" onclick="stopTimer()">END</button>
                 <button id="reset" title="Reset" class="timer-btn">RESET</button>
 
             </div>
             <div class="display-timer">
                 <h1 id="timer">00:00</h1>
-                <p id="display_end_time"></p>
+                <p id="session-end"></p>
+            </div>
+
+            <!-- <canvas id="canvas" width="1000" height="1000">
+            </canvas> -->
+
+            <div class="item html">
+                <h2>0</h2>
+                <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+                 <g>
+                  <title>Layer 1</title>
+                  <circle id="circle" class="circle_animation" r="69.85699" cy="81" cx="81" stroke-width="8" stroke="#6fdb6f" fill="none"/>
+                 </g>
+                </svg>
             </div>
 
             <!--
@@ -56,6 +71,7 @@
             -->
         </div>
         <script src="app.js"></script>
-
+        <script src="circle.js"></script>
+        
     </body>
 </html>
