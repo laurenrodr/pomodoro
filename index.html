@@ -26,19 +26,19 @@
                 <button class="short" data-time="2500" class="timer-btn">SHORT BREAK</button>
                 <button class="long" data-time="2500" class="timer-btn">LONG BREAK</button>
                 -->
-                <button id="start" title="Start" class="timer-btn">START</button>
-                <button id="pause" title="Pause" class="timer-btn">PAUSE</button>
+                <button id="start" title="Start" class="timer-btn" >START</button>
+                <button id="pause" title="Pause" class="timer-btn" style="display: none;" onclick="pauseTimer()">PAUSE</button>
                 <!-- style="display: none;" -->
-                <button id="resume" title="Resume" class="timer-btn">RESUME</button>
+                <button id="resume" title="Resume" class="timer-btn" style="display: none;" onclick="resumeTimer()">RESUME</button>
                 <button id="end" title="End" class="timer-btn">END</button>
+                <button id="reset" title="Reset" class="timer-btn">RESET</button>
+
             </div>
-            <!-- <div class="display-timer">
+            <div class="display-timer">
                 <h1 id="timer">00:00</h1>
                 <p id="display_end_time"></p>
             </div>
-            <script src="app.js"></script> -->
 
-            <p id="timer">00:00</p>
             <!--
             TODO:
                 allow popup form to change pomodoro settings
