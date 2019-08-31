@@ -22,6 +22,13 @@
         </header>
         <div class="main-content">
             <div class="session-title">POMODORO</div>
+
+            <div class="popup-btn">
+                <button title="Settings" id="settings-btn" onclick="settings_popup()">
+                    <!-- settings gear imgage -->
+                </button>
+            </div>
+
             <div class="timer-buttons">
                 <button id="start" title="Start" class="timer-btn" onclick="startTimer()">START</button>
                 <button id="pause" title="Pause" class="timer-btn" style="display: none;" onclick="pauseTimer()">PAUSE</button>
@@ -50,33 +57,41 @@
                   </svg>
                 </div>
             </div>
-
-
-
-            <!-- <div class="controlls">
-              <div class="display-remain-time">00:30</div>
-            </div> -->
-
-
-
-            <!--
-            TODO:
-                allow popup form to change pomodoro settings
-                save user settings -> localStorage?
-                dark and light mode
-                change timer styling -> circle (going around as time passes)
-                allow browser notifications
-                notification tone/sound option
-                sign in option (to save setting /permanently/ [DB] and work history)
-                    -personal stats (total time/ number of pomodoros)
-                    -connect with google/trello/etc
-                todo list?
-                footer info
-                feedback page
-            -->
+        </div>
+        <div id="modal-container">
+            <div id="modal">
+                <span id="close" onclick="close()">&times;</span>
+                <h3>Settings</h3>
+                <form action="">
+                    <h4>Pomodoro Duration (minutes)</h4>
+                    <input type="text" id="popup-pomo">
+                    <h4>Short Break Duration (minutes)</h4>
+                    <input type="text" id="popup-short">
+                    <h4>Long Break Duration (minutes)</h4>
+                    <input type="text" id="popup-long">
+                    <h4>Long Break Delay (# of pomodoros)</h4>
+                    <input type="text" id="popup-delay">
+                </form>
+            </div>
         </div>
 
         <script src="app.js"></script>
+
+        <!--
+        TODO:
+            allow popup form to change pomodoro settings
+            save user settings -> localStorage?
+            dark and light mode
+            change timer styling -> circle (going around as time passes)
+            allow browser notifications
+            notification tone/sound option
+            sign in option (to save setting /permanently/ [DB] and work history)
+                -personal stats (total time/ number of pomodoros)
+                -connect with google/trello/etc
+            todo list?
+            footer info
+            feedback page
+        -->
 
     </body>
 </html>
