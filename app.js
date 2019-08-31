@@ -1,128 +1,80 @@
-var second = 1000;
-var minute = second * 60;
-var hour = minute * 60;
-var end;
-var id;
-const pomo_min = "00"
+//circle start
+let progressBar = document.querySelector('.e-c-progress');
+let indicator = document.getElementById('e-indicator');
+let pointer = document.getElementById('e-pointer');
+let length = Math.PI * 2 * 100;
+
+progressBar.style.strokeDasharray = length;
+
+function update(value, timePercent) {
+    // var offset = - length - length * value / (timePercent);
+    var offset = -(length - ((length * value) / (timePercent)));
+    progressBar.style.strokeDashoffset = offset;
+    pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`;
+};
+// var pomoText = `${pomo_min}:00`;
+// document.querySelector('.display-remain-time').textContent = pomoText;
+
+//circle ends
+const displayOutput = document.querySelector('.display-remain-time')
+
+const pomo_min = parseInt("1", 10);
 // const pomo_min = document.getElementById("minutes");
-const pomo_sec = "14";
-var time = `${pomo_min}:${pomo_sec}`;
-var count = document.getElementById("timer");
-count.textContent = time;
-var value;
-var initialOffset = '100';
 
+let intervalTimer;
+let timeLeft;
+// let wholeTime = pomo_min * 60; // manage this to set the whole time
+let wholeTime = 15; // manage this to set the whole time
 
-// var canvas = document.getElementById("canvas");
-// var c = canvas.getContext("2d");
-//
-// function degToRad(deg){
-//     var factor = Math.PI / 180;
-//     return deg*factor;
-// }
+function timer (seconds){ //counts time, takes seconds
+    let remainTime = Date.now() + (seconds * 1000);
+    displayTimeLeft(seconds);
 
-// function renderCanvas() {
-//     var length = (Date.now().getSeconds() * 100) / (end - Date.now());
-//     console.log("length = " + length);
-//
-//     var lenDeg = length * 100 / 360;
-//     console.log("lenDeg = " + lenDeg);
-//
-//     c.beginPath();
-//     c.arc(250, 250, 200, (1.5 * Math.PI), lenDeg);
-//     c.stroke();
-// }
-
-function displayTimer() {
-    console.log("time = " + time);
-    var now = Date.now();
-    var distance = end - now;
-
-
-    var minutes = Math.floor((distance % hour) / minute);
-    var seconds = Math.floor((distance % minute) / second);
-    var milliseconds = distance % second;
-
-    if (distance < 0) {
-        stopTimer();
+    intervalTimer = setInterval(function(){
+    timeLeft = Math.round((remainTime - Date.now()) / 1000);
+    if(timeLeft < 0){
+      stopTimer();
+      return ;
     }
-    else{
-        count.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-    }
-
-    value = seconds + (minutes * 60 * 1000);
-
-    var interval = setInterval(function() {
-    		if (count.textContent == "00:00") {
-                clearInterval(interval);
-    			return;
-            }
-        $('.circle_animation').css('stroke-dashoffset', initialOffset-(1*(initialOffset/value)));
+    displayTimeLeft(timeLeft);
     }, 1000);
-
-    // renderCanvas();
-
-    //var sim = setInterval(progressSim, 50);
-
 }
 
-function startTimer(m, s) {
-    end = Date.now() + (m * 60 * 1000) +  (s * 1000);
-    id = setInterval(displayTimer, 10);
+function startTimer() {
+    timer(wholeTime);
     document.getElementById("pause").style.display = "inline";
     document.getElementById("start").style.display = "none";
 }
 
-function pauseTimer() {
-    time = timer.textContent;
-    clearInterval(id);
+function pauseTimer(){
+    clearInterval(intervalTimer);
     document.getElementById("resume").style.display = "inline";
     document.getElementById("pause").style.display = "none";
-    isResume = true;
 }
 
 function resumeTimer() {
-        var t = time.split(":");
-        startTimer(parseInt(t[0], 10), parseInt(t[1], 10));
+    timer(timeLeft);
     document.getElementById("resume").style.display = "none";
     document.getElementById("pause").style.display = "inline";
 
 }
 
 function stopTimer() {
-    clearInterval(id);
-    count.textContent = "00:00";
+    clearInterval(intervalTimer);
+    timer(0);
     document.getElementById("start").style.display = "inline";
     document.getElementById("pause").style.display = "none";
+    document.getElementById("resume").style.display = "none";
 }
 
-function resetTimer() {
-    startTimer();
+// function resetTimer() {
+//     timer(wholeTime);
+// }
+
+function displayTimeLeft (timeLeft){ //displays time on the input
+  let minutes = Math.floor(timeLeft / 60);
+  let seconds = timeLeft % 60;
+  let displayString = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  displayOutput.textContent = displayString;
+  update(timeLeft, wholeTime);
 }
-
-start.addEventListener("click", function () {
-    startTimer(pomo_min, pomo_sec);
-}, false);
-
-// pause.addEventListener("click", pauseTimer, false);
-//
-// resume.addEventListener("click", resumeTimer, false);
-
-
-// var value = 10;
-// var initialOffset = '440';
-// var i = 1
-//
-// /* Need initial run as interval hasn't yet occured... */
-// // $('.circle_animation').css('stroke-dashoffset', initialOffset-(1*(initialOffset/time)));
-//
-// var interval = setInterval(function() {
-// 		$('h2').text(i);
-// 		if (i == value) {
-//             clearInterval(interval);
-// 			return;
-//         }
-//     $('.circle_animation').css('stroke-dashoffset', initialOffset-((i+1)*(initialOffset/value)));
-//     i++;
-// }, 1000);
