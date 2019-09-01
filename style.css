@@ -115,20 +115,20 @@ svg {
     transform: rotate(-90deg);
 }
 
-.e-c-base {
+.prog-base {
   fill: none;
   stroke: #B6B6B6;
   stroke-width: 6px
 }
 
-.e-c-progress {
+.progress {
   fill: none;
   stroke: #f6dfc1;
   stroke-width: 6px;
   transition: stroke-dashoffset 0.6s;
 }
 
-#e-pointer {
+#end-point {
     transition: transform 0.6s;
 }
 
