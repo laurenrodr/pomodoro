@@ -1,99 +1,115 @@
-const default_pomo = 25;
-const default_short = 5;
-const default_long = 10;
-const default_delay = 4;
+window.addEventListener("load", function(){
+    var audio = new Audio('sounds/beep.mp3');
 
-localStorage.setItem("pomo", default_pomo);
-localStorage.setItem("short", default_short);
-localStorage.setItem("long", default_long);
-localStorage.setItem("delay", default_delay);
+    let pomo_min = 25;
+    //circle start
+    let progressBar = document.querySelector('.e-c-progress');
+    let indicator = document.getElementById('e-indicator');
+    let pointer = document.getElementById('e-pointer');
+    let length = Math.PI * 2 * 100;
+    var closePopup = document.getElementById("close");
 
-const pomo_min = document.getElementById("popup-pomo").value;
+    progressBar.style.strokeDasharray = length;
 
-//circle start
-let progressBar = document.querySelector('.e-c-progress');
-let indicator = document.getElementById('e-indicator');
-let pointer = document.getElementById('e-pointer');
-let length = Math.PI * 2 * 100;
-var closePopup = document.getElementById("close");
+    function update(value, timePercent) {
+        // var offset = - length - length * value / (timePercent);
+        var offset = -(length - ((length * value) / (timePercent)));
+        progressBar.style.strokeDashoffset = offset;
+        pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`;
+    };
+    // var pomoText = `${pomo_min}:00`;
+    // document.querySelector('.display-remain-time').textContent = pomoText;
 
-progressBar.style.strokeDasharray = length;
+    //circle ends
+    const displayOutput = document.querySelector('.display-remain-time');
+    document.querySelector('.display-remain-time').innerHTML = `${pomo_min}:00`;
 
-function update(value, timePercent) {
-    // var offset = - length - length * value / (timePercent);
-    var offset = -(length - ((length * value) / (timePercent)));
-    progressBar.style.strokeDashoffset = offset;
-    pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`;
-};
-// var pomoText = `${pomo_min}:00`;
-// document.querySelector('.display-remain-time').textContent = pomoText;
+    //const pomo_min = parseInt("1", 10);
 
-//circle ends
-const displayOutput = document.querySelector('.display-remain-time')
+    let intervalTimer;
+    let timeLeft;
+    let wholeTime; // manage this to set the whole time
 
-//const pomo_min = parseInt("1", 10);
+    function timer (seconds){ //counts time, takes seconds
+        let remainTime = Date.now() + (seconds * 1000);
+        displayTimeLeft(seconds);
 
-let intervalTimer;
-let timeLeft;
-let wholeTime = pomo_min * 60; // manage this to set the whole time
-
-function timer (seconds){ //counts time, takes seconds
-    let remainTime = Date.now() + (seconds * 1000);
-    displayTimeLeft(seconds);
-
-    intervalTimer = setInterval(function(){
-    timeLeft = Math.round((remainTime - Date.now()) / 1000);
-    if(timeLeft < 0){
-      stopTimer();
-      return ;
+        intervalTimer = setInterval(function(){
+        timeLeft = Math.round((remainTime - Date.now()) / 1000);
+        if(timeLeft < 0){
+            clearInterval(intervalTimer);
+          stopTimer();
+          return ;
+        }
+        displayTimeLeft(timeLeft);
+        }, 1000);
     }
-    displayTimeLeft(timeLeft);
-    }, 1000);
-}
 
-function startTimer() {
-    timer(wholeTime);
-    document.getElementById("pause").style.display = "inline";
-    document.getElementById("start").style.display = "none";
-}
+    function pomodoro(){
+        switchTimer();
+        pomo_min = 25;
+        startTimer(pomo_min);
+    }
 
-function pauseTimer(){
-    clearInterval(intervalTimer);
-    document.getElementById("resume").style.display = "inline";
-    document.getElementById("pause").style.display = "none";
-}
+    function shortBreak(){
+        switchTimer();
+        pomo_min = 5;
+        startTimer(pomo_min);
+    }
 
-function resumeTimer() {
-    timer(timeLeft);
-    document.getElementById("resume").style.display = "none";
-    document.getElementById("pause").style.display = "inline";
+    function longBreak(){
+        switchTimer();
+        pomo_min = 10;
+        startTimer(pomo_min);
+    }
 
-}
+    function startTimer(pomo_min) {
+        wholeTime = pomo_min * 60
+        timer(wholeTime);
+        document.getElementById("pause").style.display = "inline";
+        document.getElementById("start").style.display = "none";
+    }
 
-function stopTimer() {
-    clearInterval(intervalTimer);
-    timer(0);
-    document.getElementById("start").style.display = "inline";
-    document.getElementById("pause").style.display = "none";
-    document.getElementById("resume").style.display = "none";
-}
+    function pauseTimer() {
+        clearInterval(intervalTimer);
+        document.getElementById("resume").style.display = "inline";
+        document.getElementById("pause").style.display = "none";
+    }
 
-// function resetTimer() {
-//     timer(wholeTime);
-// }
+    function resumeTimer() {
+        timer(timeLeft);
+        document.getElementById("resume").style.display = "none";
+        document.getElementById("pause").style.display = "inline";
 
-function displayTimeLeft (timeLeft){ //displays time on the input
-  let minutes = Math.floor(timeLeft / 60);
-  let seconds = timeLeft % 60;
-  let displayString = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  displayOutput.textContent = displayString;
-  update(timeLeft, wholeTime);
-}
+    }
 
-function settings_popup() {
-    document.getElementById("settings-btn").style.display = "block";
-}
+    function switchTimer() {
+        clearInterval(intervalTimer);
+        document.getElementById("start").style.display = "inline";
+        document.getElementById("pause").style.display = "none";
+        document.getElementById("resume").style.display = "none";
+    }
 
-close.onclick = function() {
-    document.getElementById("modal-container").style.display = "none";
-}
+    function stopTimer() {
+        switchTimer();
+        timer(0);
+    }
+
+
+    function displayTimeLeft (timeLeft){ //displays time on the input
+      let minutes = Math.floor(timeLeft / 60);
+      let seconds = timeLeft % 60;
+      let displayString = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      displayOutput.textContent = displayString;
+      update(timeLeft, wholeTime);
+    }
+
+    function settingsPopup() {
+        document.getElementById("modal-container").style.display = "inline";
+    }
+
+    function closePopup() {
+        document.getElementById("modal-container").style.display = "none";
+    }
+
+});
