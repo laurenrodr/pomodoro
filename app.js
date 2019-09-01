@@ -11,19 +11,14 @@ var closePopup = document.getElementById("close");
 progressBar.style.strokeDasharray = length;
 
 function update(value, timePercent) {
-    // var offset = - length - length * value / (timePercent);
     var offset = -(length - ((length * value) / (timePercent)));
     progressBar.style.strokeDashoffset = offset;
     pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`;
 };
-// var pomoText = `${pomo_min}:00`;
-// document.querySelector('.display-remain-time').textContent = pomoText;
 
 //circle ends
 const displayOutput = document.querySelector('.display-remain-time');
 document.querySelector('.display-remain-time').innerHTML = `${pomo_min}:00`;
-
-//const pomo_min = parseInt("1", 10);
 
 let intervalTimer;
 let timeLeft;
@@ -37,9 +32,7 @@ function timer (seconds){ //counts time, takes seconds
     timeLeft = Math.round((remainTime - Date.now()) / 1000);
     if(timeLeft < 0){
       clearInterval(intervalTimer);
-      audio.play();
       stopTimer();
-      audio.pause();
       return ;
     }
     displayTimeLeft(timeLeft);
