@@ -4,7 +4,7 @@ let pomo_min = 25;
 //circle start
 let progressBar = document.querySelector(".progress");
 // let indicator = document.getElementById('e-indicator');
-let pointer = document.getElementById(".prog-base");
+let pointer = document.querySelector(".prog-base");
 let length = Math.PI * 2 * 100;
 var closePopup = document.getElementById("close");
 
