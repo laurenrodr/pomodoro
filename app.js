@@ -1,6 +1,6 @@
 var audio = new Audio("./assets/chime.wav");
 
-let pomo_min = 25;
+let pomo_min = 0;
 //circle start
 let progressBar = document.querySelector(".progress");
 let pointer = document.querySelector(".prog-base");
@@ -17,7 +17,7 @@ function update(value, timePercent) {
 
 //circle ends
 const displayOutput = document.querySelector('.display-remain-time');
-document.querySelector('.display-remain-time').innerHTML = `${pomo_min}:00`;
+document.querySelector('.display-remain-time').innerHTML = `${pomo_min < 10 ? '0' : ''}${pomo_min}:00`;
 
 let intervalTimer;
 let timeLeft;
