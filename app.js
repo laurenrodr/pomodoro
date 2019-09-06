@@ -78,7 +78,7 @@ function resumeTimer() {
 
 function switchTimer() {
     clearInterval(intervalTimer);
-    document.getElementById("start").style.display = "inline";
+    document.getElementById("start").style.display = "none";
     document.getElementById("pause").style.display = "none";
     document.getElementById("resume").style.display = "none";
 }
