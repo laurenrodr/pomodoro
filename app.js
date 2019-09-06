@@ -46,7 +46,7 @@ function pomodoro(){
 
 function shortBreak(){
     switchTimer();
-    pomo_min = 1;
+    pomo_min = 5;
     startTimer(pomo_min);
 }
 
