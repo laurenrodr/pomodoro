@@ -2,7 +2,7 @@
 
 This project is a web based clock, useful for the Pomodoro productivity technique.
 
-### The Technique
+### The Pomodoro Technique
 Break up your worktime into 25 minute intervals ("pomodoro"), separated by 5 minute break intervals ("short break"). During each pomodoro, you work for 25 minutes without distractions, and during each break you step away from your work. After four or so "pomodoros", instead of taking a "short break," take a "long break," which can vary from 10 to 20 minutes depending on the method; this project uses 10 minutes for its "long break."
 
 ### Features
@@ -10,9 +10,8 @@ Break up your worktime into 25 minute intervals ("pomodoro"), separated by 5 min
 * 5 minutes timer -- Short Break
 * 10 minutes timer -- Long Break
 * Ability to Pause/Play each time interval
-*
 
-### For Example, View Deployment
+#### For Example, View Deployment
 
 https://laurenrodr.github.io/pomodoro/
 
