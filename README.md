@@ -12,7 +12,7 @@ Break up your worktime into 25 minute intervals ("pomodoro"), separated by 5 min
 * Ability to Pause/Play each time interval
 *
 
-### For Example View Deployment
+### For Example, View Deployment
 
 https://laurenrodr.github.io/pomodoro/
 
