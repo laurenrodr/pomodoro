@@ -52,7 +52,7 @@ function shortBreak(){
 
 function longBreak(){
     switchTimer();
-    pomo_min = 10;
+    pomo_min = 15;
     startTimer(pomo_min);
 }
 
